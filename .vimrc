@@ -47,7 +47,7 @@ set incsearch             " Incremental search
 set hlsearch							" Highlight search matches.
 
 set backup
-set backupdir=/home/juhakaja/.vim/backupfiles/   " backup dir
+set backupdir=/tmp/.vim/backupfiles/   " backup dir
 set backupext=~         " backup extension
 
 set showcmd   " Show (partial) command in status line.
