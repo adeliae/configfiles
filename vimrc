@@ -1,27 +1,35 @@
-set nocompatible  " Use Vim defaults (much better!)
-set bs=2    " allow backspacing over everything in insert mode
+"file $HOME/.vimrc
 
-set history=500    " keep 50 lines of command line history
-set ruler   " show the cursor position all the time
-
-"Turn on filetype plugins to automagically
-  "Grab commands for particular filetypes.
-  "Grabbed from $VIM/ftplugin
+syntax on
 filetype plugin on
 filetype indent on
 
-syntax on
+set autoindent
+set nosi
 
+" Turn smart indenting on for perl and ruby files
+autocmd FileType perl set smartindent
+autocmd FileType perl set nowrap
+autocmd FileType perl set ts=4
+autocmd FileType perl set shiftwidth=4
+autocmd FileType perl set shiftround
+autocmd FileType perl set expandtab
+
+autocmd FileType ruby set smartindent
+autocmd FileType ruby set nowrap
+autocmd FileType ruby set ts=2
+autocmd FileType ruby set shiftwidth=2 
+autocmd FileType ruby set shiftround
+autocmd FileType ruby set expandtab
+
+set nocompatible  " Use Vim defaults (much better!)
+set bs=2    " allow backspacing over everything in insert mode
+set history=500    " keep 50 lines of command line history
+set ruler   " show the cursor position all the time
 set nostartofline " leave my cursor where it was on file reopen
 set showmatch " Show matching brackets
 set matchtime=5 " Match fo 5 tenths of a second
  
-" Turn smart indenting on for perl and ruby files
-autocmd FileType perl set smartindent
-autocmd FileType ruby set smartindent
-autocmd FileType perl set nowrap
-autocmd FileType ruby set nowrap
-
 " indents and tabs should all be 2 spaces
 set softtabstop=2
 set tabstop=2

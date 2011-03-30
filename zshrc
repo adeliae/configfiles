@@ -1,6 +1,11 @@
 #file $HOME/.zshrc
 
 bindkey -v
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^r" history-incremental-search-backward
+bindkey ' ' magic-space
+bindkey "^t" push-line-or-edit
 
 autoload -U compinit
 compinit
@@ -13,15 +18,20 @@ export VISUAL=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LESS="-rX"
+
+setopt ALWAYS_TO_END
+setopt AUTO_NAME_DIRS
+setopt COMPLETE_IN_WORD
+setopt NO_BEEP
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY # for sharing history between zsh processes
+setopt autocd # No cd required
 force_color_prompt=yes
 
 # Paths
 export PATH="$PATH:/bin:/sbin:/usr/bin/:$HOME/bin:"
 export PS1=": %{`echo $RED`%}%B%m%b %{`echo $CYAN`%}%48<...<%~ $%{`echo $LT_GRAY`%}; "
 unset RPROMPT
-
-#allow tab completion in the middle of a word
-setopt COMPLETE_IN_WORD
 
 ## history
 export HISTFILE=~/.zsh_history
@@ -34,17 +44,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_NO_FUNCTIONS
 setopt HIST_NO_STORE
-
-## for sharing history between zsh processes
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY
-
-## never ever beep ever
-setopt NO_BEEP
-# xset b off
-
-# No cd required
-setopt autocd
 
 #Aliases
 alias vi=vim
@@ -112,3 +111,5 @@ export ON_LT_CYAN='\033[1m\033[46m'
 export ON_LT_GRAY='\033[1m\033[47m'
 export ON_LT_WHITE='\033[1m\033[49m'
 
+# Ruby Version Manager - http://rvm.beginrescueend.com/
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
