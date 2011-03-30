@@ -1,4 +1,5 @@
 #file $HOME/.zshrc
+source .zshenv
 
 bindkey -v
 bindkey "^A" beginning-of-line
@@ -9,16 +10,20 @@ bindkey "^t" push-line-or-edit
 
 autoload -U compinit
 compinit
+zstyle ':completion::complete:*' use-cache 1
+zmodload zsh/complist
 autoload -U colors
 colors
 
-# envops
+# Envops
 export EDITOR=vim
 export VISUAL=vim
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export LESS="-rX"
+export DIRSTACKSIZ=20
 
+setopt autopushd pushdsilent
 setopt ALWAYS_TO_END
 setopt AUTO_NAME_DIRS
 setopt COMPLETE_IN_WORD
@@ -29,6 +34,8 @@ setopt autocd # No cd required
 force_color_prompt=yes
 
 # Paths
+export PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:$PATH
+export VIMRUNTIME=/usr/local/share/vim/vim73
 export PATH="$PATH:/bin:/sbin:/usr/bin/:$HOME/bin:"
 export PS1=": %{`echo $RED`%}%B%m%b %{`echo $CYAN`%}%48<...<%~ $%{`echo $LT_GRAY`%}; "
 unset RPROMPT
@@ -38,18 +45,31 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
 
+setopt histignoredups
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 setopt HIST_NO_FUNCTIONS
 setopt HIST_NO_STORE
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_VERIFY
+setopt INC_APPEND_HISTORY
+export HISTSIZE=1000
+export SAVEHIST=5000
+export HISTFILE=~/.zhistory
+setopt SHARE_HISTORY # import new commands from the history file also in other zsh-session
+setopt correct # try to correct spelling
+setopt extended_glob
+setopt nobeep
+watch=(all)
 
 #Aliases
 alias vi=vim
 alias hist='history -d'
 alias ls='ls --color=yes'
-alias la='ls -al --color=yes'
+alias la='ls -al'
 alias grep='grep --colour -E'
 alias less=vless
 alias run-help=man
@@ -59,6 +79,15 @@ alias -g ND='$(ls -d *(/om[1]))' # newest directory
 alias -g NF='$(ls *(.om[1]))'    # newest file
 alias sz="source $HOME/.zshrc"
 alias ez="vi $HOME/.zshrc"
+
+## Mac/Linux specific settings
+if [[ $HOME[2,5] == 'User' ]]; then
+    # Mac Stuff
+    alias ls='ls -G'
+else
+    # Linux Stuff
+    alias ls='ls --color=always'
+fi
 
 # Extra awesomeness
 u () {
@@ -110,6 +139,15 @@ export ON_LT_MAGENTA='\033[1m\033[45m'
 export ON_LT_CYAN='\033[1m\033[46m'
 export ON_LT_GRAY='\033[1m\033[47m'
 export ON_LT_WHITE='\033[1m\033[49m'
+
+# Ensure less has some colour
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # Ruby Version Manager - http://rvm.beginrescueend.com/
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
