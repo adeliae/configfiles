@@ -36,7 +36,7 @@ force_color_prompt=yes
 
 # Paths
 export PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:$PATH
-export VIMRUNTIME=/usr/local/share/vim/vim73
+# export VIMRUNTIME=/usr/local/share/vim/vim73
 export PATH="$PATH:/bin:/sbin:/usr/bin/:$HOME/bin:"
 export PS1=": %{`echo $RED`%}%B%m%b %{`echo $CYAN`%}%48<...<%~ $%{`echo $LT_GRAY`%}; "
 unset RPROMPT

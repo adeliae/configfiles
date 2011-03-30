@@ -48,7 +48,7 @@ set smartcase
 set incsearch  " Incremental search
 set hlsearch   " Highlight search matches.
 set backup
-set backupdir=~/.vim/backups/ " backup dir
+set backupdir=~/.vim/backupfiles/ " backup dir
 set directory=~/.vim/tmp
 set showcmd  " Show (partial) command in status line.
 set showmode
