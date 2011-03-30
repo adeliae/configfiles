@@ -1,4 +1,5 @@
 #file $HOME/.zshrc
+source .zshwork
 source .zshenv
 
 bindkey -v
