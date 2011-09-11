@@ -1,6 +1,6 @@
 #file $HOME/.zshrc
-source .zshwork
-source .zshenv
+source ~/.zshwork
+source ~/.zshenv
 
 bindkey -v
 bindkey "^A" beginning-of-line
@@ -29,8 +29,6 @@ setopt ALWAYS_TO_END
 setopt AUTO_NAME_DIRS
 setopt COMPLETE_IN_WORD
 setopt NO_BEEP
-setopt INC_APPEND_HISTORY
-setopt SHARE_HISTORY # for sharing history between zsh processes
 setopt autocd # No cd required
 force_color_prompt=yes
 
@@ -57,10 +55,7 @@ setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
-export HISTSIZE=1000
-export SAVEHIST=5000
-export HISTFILE=~/.zhistory
-setopt SHARE_HISTORY # import new commands from the history file also in other zsh-session
+#setopt SHARE_HISTORY # import new commands from the history file also in other zsh-session
 setopt correct # try to correct spelling
 setopt extended_glob
 setopt nobeep
